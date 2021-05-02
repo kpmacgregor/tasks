@@ -1,5 +1,5 @@
 :root {
-  font-size: 20px;
+  font-size: 24px;
   font-family: monospace;
   color: #333;
 }
@@ -32,6 +32,10 @@ ul {
   padding: 0;
 }
 li {
+  display: flex;
+  align-items: center;
+  height: 1rem;
+  line-height: 1rem;
   list-style: none;
   margin-bottom: 0.2rem;
 }
@@ -40,9 +44,17 @@ li:hover {
 }
 input[type="checkbox"] {
   margin: 0 0.5rem 0 0;
+  height: 1rem;
 }
 label {
   width:100%;
+}
+button {
+  float: right;
+}
+input[type="submit"], button {
+  width: 1rem;
+  height: 1rem;
 }
 #finishedTasks {
   text-decoration: line-through;
