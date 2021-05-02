@@ -18,6 +18,9 @@ h1 {
 p {
   margin: 1rem 0 2rem 0;
 }
+p a {
+  font-size: 0.75rem;
+}
 hr {
   border: 0;
   height: 1px;
