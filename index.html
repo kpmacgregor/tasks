@@ -1,50 +1,27 @@
 <!doctype html>
 <html>
 <head>
-<title>TODOJS</title>
-<style>
-:root {
-  font-size: 20px;
-  font-family: monospace;
-}
-h1 {
-  font-size: 2.5rem;
-}
-p {
-  font-size: 0.8rem;
-}
-ul {
-  padding: 0;
-}
-li {
-  list-style: none;
-}
-body {
-  width: 300px;
-  margin: 0 auto;
-}
-#finishedTasks {
-  text-decoration: line-through;
-}
-</style>
+<title>TASKS</title>
+  <link rel="stylesheet" href="./index.css">
 </head>
 <body>
-<header>
-<h1>TODOJS</h1>
-<p>A todo app written in javascript, using localstorage for persistence.</p>
-</header>
-<main>
-  <form action="#">
-    <input type="text" id="newTask"></input>
-    <input type="submit" value="+"></input>
-    <ul id="pendingTasks">
-    </ul>
-    <hr>
-    <ul id="finishedTasks">
-    </ul>
-  </form>
-
-<script src="index.js"></script>
-</main>
+  <header>
+  <h1>TASKS</h1>
+  <p>A todo app written in javascript, using localstorage for persistence.</p>
+  </header>
+  <main>
+    <form action="#">
+      <div id="inputs">
+        <input type="text" id="newTask" placeholder="New Task"></input>
+        <input type="submit" value="+"></input>
+      </div>
+      <ul id="pendingTasks">
+      </ul>
+      <hr>
+      <ul id="finishedTasks">
+      </ul>
+    </form>
+  </main>
+  <script src="index.js"></script>
 </body>
 </html>
