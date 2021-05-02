@@ -27,8 +27,9 @@ function createTask(name) {
 }
 
 function registerTask(task) {
-  tasks[task.index] = task;
+  tasks.push(task);
 }
+
 function unregisterTask(task) {
   /* using .filter instead of .splice
      because undefined values left by .splice
@@ -39,11 +40,20 @@ function unregisterTask(task) {
   tasks = newTasks;
 }
 
+function sortTasks() {
+  function comp(e1, e2) {
+    if (e1.index < e2.index) return -1;
+    if (e1.index > e2.index) return 1;
+  }
+  tasks.sort(comp);
+}
+
 function saveTask(task) {
   let key = task.id,
       val = JSON.stringify(task);
   storage.setItem(key, val);
 }
+
 function removeTask(task) {
   let key = task.id;
   storage.removeItem(key);
@@ -70,7 +80,7 @@ function makeTaskElement(task) {
 }
 
 function getTaskElement(task) {
-  let input = document.querySelector(`#${task.id}`);
+  let input = document.getElementById(`${task.id}`);
   if (input == null) {
     return makeTaskElement(task);
   }
@@ -123,8 +133,10 @@ function loadTasks() {
     let key = storage.key(i),
         task = JSON.parse(storage.getItem(key));
     registerTask(task);
-    appendTaskElement(task);
   }
+  /* sorting on load ensures they'll retain order */
+  sortTasks();
+  tasks.forEach(appendTaskElement);
 }
 
 document.querySelector('form').addEventListener('submit', onTaskInput);
