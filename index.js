@@ -7,18 +7,27 @@ function makeId(name) {
   return `uid-${name}-${Math.floor(Math.random() * 100000) + Date.now()}`;
 }
 
+function getTaskIndex() {
+  let n = tasks.length;
+  if (n) {
+    return tasks[tasks.length - 1].index + 1;
+  } else {
+    return 0;
+  }
+}
+
 function createTask(name) {
   let task = {
     name: name,
     id: makeId(name),
-    order: tasks.length,
+    index: getTaskIndex(),
     completed: false
   }
   return task;
 }
 
 function registerTask(task) {
-  tasks[task.order] = task;
+  tasks[task.index] = task;
 }
 
 function saveTask(task) {
@@ -84,6 +93,7 @@ function loadTasks() {
     registerTask(task);
     appendTaskElement(task);
   }
+  console.log(tasks);
 }
 
 document.querySelector('form').addEventListener('submit', onTaskInput);
