@@ -36,6 +36,11 @@ function unregisterTask(task) {
      cause future calls to .find to fail,
      so they would need to be filtered out anyway.
   */
+  /* Above comment is incorrect. Empty array values
+     were not the result of array.splice, but
+     were created when tasks were loaded and assigned
+     to the array with non-consecutive indices
+  */
   let newTasks = tasks.filter(t => t !== task);
   tasks = newTasks;
 }
